@@ -1,3 +1,7 @@
+Tunning system perf
+
+dimanche 3 octobre 2021
+19:24
 
 # Tuned
 
@@ -62,9 +66,9 @@ $ ps j
 Display roots real and effective processes
 #ps -U root -u root u
 
-[root@server2 ~]# nice   -n  9   ./loop   &
+[root@server2 ~]#nice   -n  9   ./loop   &
 [6] 1815
-[root@server2 ~]# cat loop
+[root@server2 ~]#cat loop
 #!/bin/sh
 
 while((1))
@@ -163,7 +167,7 @@ dimanche 31 octobre 2021
    
 #grub2-mkconfig -o /boot/grub2/grub.cfg
 
- JOBS TOP Monitoring and managing Linux process 
+# JOBS TOP Monitoring and managing Linux process 
 
 lundi 18 octobre 2021
 14:08
@@ -231,11 +235,7 @@ $ bg %1  (start suspended/stopped job)
 $ fg
 $ bg
 
-
-
-
-
-#Killing processes :
+Killing processes :
 
 $ kill -l
 
@@ -299,11 +299,11 @@ bash(8998)
 
 
 
-Monitoring process activity
-load average (provided by linux kernel  every 5s, based on process stat)
-processes responsible for figh resource use on a server the load number is essentially based on the number of processes that are ready to run (in process stat R) and are waiting for I/O to complete (in process stat D)
+# Monitoring process activity
 
-$uptime
+load average (provided by linux kernel  every 5s, based on process stat) processes responsible for figh resource use on a server the load number is essentially based on the number of processes that are ready to run (in process stat R) and are waiting for I/O to complete (in process stat D)
+
+uptime
 	15:29:03 up 14 min, 2 users, load average: 2.92, 4.48, 5.20
 
 ~]$ lscpu
@@ -345,9 +345,10 @@ shared objects. (Labeled RSS in the ps command.)
 • Z = Zombie
 • CPU time (TIME)
 
+
 ps j
 
-Adjust process schaduling
+# Adjust process schaduling
 
 jeudi 11 novembre 2021
 21:16
@@ -368,19 +369,16 @@ All schedulars
 Set policy to SCHED_FIFO with 50 priority:
 #chrt -f -p [1..99] {pid}  (fifo policy)
 #chrt -f -p 50 1024
+
 #chrt -b -p 0 {pid}  (batch policty)
 #chrt -b -p 0 1024
+
 #chrt -o -p 0 {pid} (SCHED_OTHER policy)
 
 #chrt -r -p [1..99] {pid}  (SCHED_RR policy)
 #chrt -r -p 20 1024
+
 #chrt -p 1024
-
-
-
-
-
-
 
 
 
