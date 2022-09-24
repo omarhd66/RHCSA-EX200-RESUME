@@ -1,10 +1,11 @@
 Tunning system perf
-
-dimanche 3 octobre 2021
-19:24
-
+	Tuned
+	Nice
+	JOBS TOP Monitoring and managing Linux process
+	Adjusting the boot process
+#######
 # Tuned
-
+#######
 dimanche 3 octobre 2021
 19:24
 
@@ -32,19 +33,13 @@ tuned-adm off
 Tuned-adm active
 	No current active profile.
 
-
-
-
-
 $ tuned-adm profile myprof powersave
 
+#######
 # Nice
-
+#######
 dimanche 3 octobre 2021
 20:27
-
-
-
 
 $ grep -c '^prodessor' /proc/cpuinfo
 $ for i in $(seq 1 4); do sha1sam /dev/zero &; done
@@ -78,9 +73,9 @@ do
                 break
         fi
 done
-
+###################################
 # Controlling the boot process
-
+###################################
 lundi 4 octobre 2021
 20:02
 
@@ -110,65 +105,9 @@ add unit
 ctrl+x
 
 
-# Resetting the root password from the boot loader
-
-press any key and chose kernel
-press e
-rd.break   enforcing=0 (initramfs)
-ctrl+x
-
-mount -o remount,rw /sysroot
-chroot /sysroot
-        passwd root
-        touch /.autorelabel   (necessary)
-        mount -o remount,ro /
-        exit
-exit
-
-If not working
-press any key and chose kernel
-press e
-Replace ro crashkernal=auto by
-rd.break   enforcing=0 (initramfs)
-ctrl+x
-
-mount -o remount,rw /sysroot
-chroot /sysroot
-        passwd root
-        touch /.autorelabel   (necessary)
-        mount -o remount,ro /
-        exit
-exit
-
-Repairing file system issues at boot
-error on fstab
-
-press any key and chose kernel
-press e
-systemctl.unit=emergency.target
-ctrl+x
-
-mount | grep / (ro)
-mount -o remount,rw /
-mount -a
-	error
-vim /etc/fsrab
-systemctl daemon-reload
-mount -a
-sustemctl reboot
-
-Grub
-
-dimanche 31 octobre 2021
-21:50
-
-#vi /etc/default/grub
-      "remove rhgb quiet"
-   
-#grub2-mkconfig -o /boot/grub2/grub.cfg
-
+#################################################
 # JOBS TOP Monitoring and managing Linux process 
-
+#################################################
 lundi 18 octobre 2021
 14:08
 
@@ -299,7 +238,7 @@ bash(8998)
 
 
 
-# Monitoring process activity
+Monitoring process activity
 
 load average (provided by linux kernel  every 5s, based on process stat) processes responsible for figh resource use on a server the load number is essentially based on the number of processes that are ready to run (in process stat R) and are waiting for I/O to complete (in process stat D)
 
@@ -347,9 +286,9 @@ shared objects. (Labeled RSS in the ps command.)
 
 
 ps j
-
+############################
 # Adjust process schaduling
-
+############################
 jeudi 11 novembre 2021
 21:16
 
